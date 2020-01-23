@@ -9,7 +9,11 @@ Webbsidan ska kunna göra följande:
 * Visa kameravyer
 * Ändra parametrar för de olika styrsystemen
 * Ändra behörighet för olika användare
+* Lägga till/ta bort sensorer samt ändra buss, adress och kommando.
 
 ## 2. Vyer (visa bildskisser på dina sidor)
 ## 3. Databas med ER-diagram (Bild)
-## 4. Arkitektur (Beskriv filer och mappar - vad gör/inehåller de?)
+
+![ER Diagram](ER%20Diagram.svg)
+
+## 4. Arkitektur (Beskriv filer och mappar - vad gör/innehåller de?)
