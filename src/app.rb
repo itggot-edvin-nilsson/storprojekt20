@@ -1,20 +1,28 @@
 require 'sinatra'
 require 'slim'
-require 'sqlite3'
-require 'bcrypt'
+require_relative './model.rb'
 
 enable :sessions
-
-$db = SQLite3::Database.new('db/users.db')
-$db.results_as_hash = true
+set :bind, '0.0.0.0'
 
 get '/' do
   return slim(:index)
 end
 
-get '/realtime' do
+get '/realtid' do
+  raise NotImplementedError
+  classes = ['', '', '', '', '']
+  case params['senaste']
+  when 'timmen'
+  when 'dygnet'
+  when 'veckan'
+  when 'all'
+  else
+
+  end
   return slim(:'realtime/index')
 end
+
 #Error
 get '/error' do
   return slim(:'error')
@@ -29,32 +37,22 @@ get '/login' do
   return slim(:'user/index')
 end
 
-hash = {}
-
 post '/login' do
-  begin
-    username = params[:username]
-    password = params[:password]
-
-    password_digests = $db.execute('SELECT Password FROM User WHERE Username = ?', username)
-
-    if BCrypt::Password.new(password_digests[0]['Password']) == password
-      token = username.hash * password.hash * password_digests.hash * rand(2**64)
-      hash[token] = Time.now + 60 * 20
-      session[:token] = token
-    end
-  rescue
-    session[:error] = 'Användarnamnet eller lösenordet är felaktigt.'
+  response = login(params[:username], params[:password])
+  if response.successful
+    session[:token] = response.data
+    redirect('/')
+  else
+    session[:error] = response.data
     redirect('/error')
-    return
   end
-  redirect('/')
 end
 
-def verify_login(token)
-  if hash[token] < Time.now
-    session[:token] = Time.now + 60 * 20
-  end
+before /\/(register|res)/ do
+  response = verifyLogin(session[:token])
+  p response
+  session[:token] = response.data
+  redirect('/login') if !response.successful
 end
 
 get '/register' do
@@ -62,31 +60,16 @@ get '/register' do
 end
 
 post '/register' do
-  username = params[:username]
-  password = params[:password]
-  password2 = params[:password2]
-  groupId = params[:group].to_i
-
-  errors = []
-  if (password != password2)
-    errors << 'Lösenorden överensstämmer inte.'
-  end
-  if (username.empty? || username.length > 1000)
-    errors << 'Användarnamnet måste vara mellan ett 1000 tecken.'
-  end
-
-  passwordDigest = BCrypt::Password.create(password)
-
-  begin
-    $db.execute('INSERT INTO User (GroupId, Password, Username) VALUES (?,?,?)',groupId ,passwordDigest, username)
-  rescue
-    errors << 'Användarnamn är upptaget.'
-  end
-  p errors
-  if !errors.empty?
-    session[:error] = errors.join("\n")
+  response = register(params[:username], params[:password], params[:password2], params[:group].to_i)
+  if response.successful
+    redirect('/register')
+  else
+    session[:error] = response.data
     redirect('/error')
-    return
   end
-  redirect('/register')
+end
+
+post '/logout' do
+  session.destroy
+  redirect('/')
 end

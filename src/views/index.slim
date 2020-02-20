@@ -1,3 +1,11 @@
 p Startsida
 
-a href="/login" Logga in
+- if session[:token]
+  form action="logout" method="post"
+    input type="submit" value="Logga ut"
+- else
+  form action="login" method="get"
+    input type="submit" value="Logga in"
+  /*a href="/login" Logga in*/
+
+p = session[:token]
