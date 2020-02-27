@@ -10,17 +10,21 @@ get '/' do
 end
 
 get '/realtid' do
-  raise NotImplementedError
-  classes = ['', '', '', '', '']
-  case params['senaste']
-  when 'timmen'
-  when 'dygnet'
-  when 'veckan'
-  when 'all'
-  else
+  classes = Array.new(5) {''}
+  classes[getDataPeriod(params['senaste'])] = ' active'
+  return slim(:'realtime/index', locals: {classes: classes})
+end
 
-  end
-  return slim(:'realtime/index')
+get '/realtid/:request' do
+  requsetLifeTechServer(URI("https://ntilifetech.ga/realtid/#{params[:request]}?#{request.query_string}"), response)
+end
+
+get '/kamera' do
+  slim(:'/camera/index')
+end
+
+get '/media' do
+  slim(:'/media/index')
 end
 
 #Error
@@ -72,4 +76,9 @@ end
 post '/logout' do
   session.destroy
   redirect('/')
+end
+
+get '*' do
+  status 404
+  slim(:'404')
 end
