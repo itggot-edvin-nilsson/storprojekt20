@@ -18,7 +18,7 @@ class ModelResponse
   def data; @data end
 end
 
-def requsetLifeTechServer(uri, response)
+def requestLifeTechServer(uri, response)
   Net::HTTP.start(uri.host, uri.port,
                   :use_ssl => uri.scheme == 'https') do |http|
     request = Net::HTTP::Get.new uri
@@ -56,7 +56,7 @@ public def login(username, password)
       raise StandardError
     end
   rescue
-    return ModelResponse.new(false, 'Användarnamnet eller lösenordet är felaktigt.')
+    return ModelResponse.new(false, 'Användarnamnet eller lösenordet var felaktigt.')
   end
 end
 
@@ -87,5 +87,5 @@ public def register(username, password, password2, groupId)
   if !errors.empty?
     return ModelResponse.new(false, errors.join("\n"))
   end
-  return ModelResponse.now(true, nil)
+  return ModelResponse.new(true, nil)
 end

@@ -1,3 +1,5 @@
 article
-  img.camera src="https://ntilifetech.ga/kamera/get-latest-image" /
+  img.camera src="https://ntilifetech.ga/kamera/get-latest-image?image=1" /
+  | Bilden är tagen kl. #{Time.now.hour}:#{(Time.now.min - Time.now.min % 15).to_s.rjust(2, '0')}.
+  img.camera src="https://ntilifetech.ga/kamera/get-latest-image?image=2" /
   | Bilden är tagen kl. #{Time.now.hour}:#{(Time.now.min - Time.now.min % 15).to_s.rjust(2, '0')}.

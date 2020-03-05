@@ -16,7 +16,7 @@ get '/realtid' do
 end
 
 get '/realtid/:request' do
-  requsetLifeTechServer(URI("https://ntilifetech.ga/realtid/#{params[:request]}?#{request.query_string}"), response)
+  requestLifeTechServer(URI("https://ntilifetech.ga/realtid/#{params[:request]}?#{request.query_string}"), response)
 end
 
 get '/kamera' do
@@ -27,13 +27,8 @@ get '/media' do
   slim(:'/media/index')
 end
 
-#Error
-get '/error' do
-  return slim(:'error')
-end
-
-after '/error' do
-  session[:error] = nil
+after '/*' do
+  session[:error] = nil if request.request_method == 'GET'
 end
 
 #User
@@ -45,18 +40,26 @@ post '/login' do
   response = login(params[:username], params[:password])
   if response.successful
     session[:token] = response.data
-    redirect('/')
+    if session[:redirect]
+      path = session[:redirect]
+      session[:redirect] = nil
+      redirect(path)
+    else
+      redirect('/')
+    end
   else
     session[:error] = response.data
-    redirect('/error')
+    redirect('/login')
   end
 end
 
 before /\/(register|res)/ do
   response = verifyLogin(session[:token])
-  p response
   session[:token] = response.data
-  redirect('/login') if !response.successful
+  if !response.successful
+    session[:redirect] = request.path
+    redirect('/login')
+  end
 end
 
 get '/register' do
@@ -66,10 +69,10 @@ end
 post '/register' do
   response = register(params[:username], params[:password], params[:password2], params[:group].to_i)
   if response.successful
-    redirect('/register')
+    redirect('/')
   else
     session[:error] = response.data
-    redirect('/error')
+    redirect('/register')
   end
 end
 
@@ -82,3 +85,15 @@ get '*' do
   status 404
   slim(:'404')
 end
+
+#Error
+=begin
+get '/error' do
+  return slim(:'error') if session[:error]
+  redirect('/')
+end
+
+after '/error' do
+  session[:error] = nil
+end
+=end
