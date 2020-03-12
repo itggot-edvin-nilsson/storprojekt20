@@ -53,7 +53,7 @@ post '/login' do
   end
 end
 
-before /\/(register|res)/ do
+before /\/(register|update-password)/ do
   response = verifyLogin(session[:token])
   session[:token] = response.data
   if !response.successful
@@ -73,6 +73,20 @@ post '/register' do
   else
     session[:error] = response.data
     redirect('/register')
+  end
+end
+
+get '/update-password' do
+  return slim(:'user/edit')
+end
+
+post '/update-password' do
+  response = updatePassword(params[:oldPassword], params[:newPassword], params[:newPassword2], session[:token])
+  if response.successful
+    redirect('/')
+  else
+    session[:error] = response.data
+    redirect('/update-password')
   end
 end
 
