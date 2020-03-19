@@ -1,11 +1,12 @@
 article
-    p Startsida
-
     - if session[:token]
         form action="logout" method="post"
             input type="submit" value="Logga ut"
+        a href="/update-password" Ändra lösenord
+        br
+        a href="/register" Registrera användare
     - else
         form action="login" method="get"
             input type="submit" value="Logga in"
 
-    p = session[:token]
+    / p = session[:token]

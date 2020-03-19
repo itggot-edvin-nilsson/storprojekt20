@@ -4,8 +4,11 @@ require 'net/http'
 
 $hash = {}
 
-$db = SQLite3::Database.new('db/users.db')
-$db.results_as_hash = true
+$dbUsers = SQLite3::Database.new('db/users.db')
+$dbUsers.results_as_hash = true
+
+$dbSensors = SQLite3::Database.new('db/sensors.db')
+$dbSensors.results_as_hash = true
 
 class ModelResponse
   @successful
@@ -47,23 +50,24 @@ end
 #Login
 public def login(username, password)
   begin
-    password_digests = $db.execute('SELECT Password FROM User WHERE Username = ?', username)
-    if BCrypt::Password.new(password_digests[0]['Password']) == password
-      token = username.hash * password.hash * password_digests.hash * rand(2**256)
-      $hash[token] = Time.now + 60 * 20
+    result = $dbUsers.execute('SELECT Password, UserId FROM Users WHERE Username = ?', username)
+    if BCrypt::Password.new(result[0]['Password']) == password
+      token = username.hash * password.hash * result.hash * rand(2**256)
+      $hash[token] = [Time.now + 60 * 20, result[0]['UserId']]
       return ModelResponse.new(true, token)
     else
       raise StandardError
     end
-  rescue
+  rescue => error
+    p error
     return ModelResponse.new(false, 'Användarnamnet eller lösenordet var felaktigt.')
   end
 end
 
 public def verifyLogin(token)
   begin
-    if Time.now <= $hash[token]
-      $hash[token] = Time.now + 60 * 20
+    if Time.now <= $hash[token][0]
+      $hash[token][0] = Time.now + 60 * 20
       return ModelResponse.new(true, token)
     end
   rescue
@@ -79,13 +83,59 @@ public def register(username, password, password2, groupId)
   else
     passwordDigest = BCrypt::Password.create(password)
     begin
-      $db.execute('INSERT INTO User (GroupId, Password, Username) VALUES (?,?,?)',groupId ,passwordDigest, username)
+      $dbUsers.execute('INSERT INTO Users (GroupId, Password, Username) VALUES (?,?,?)', groupId, passwordDigest, username)
     rescue
       errors << 'Användarnamnet är upptaget.'
     end
   end
   if !errors.empty?
+    return ModelResponse.new(false, errors.join('\n'))
+  end
+  return ModelResponse.new(true, nil)
+end
+
+public def getUserId(token)
+  return $hash[token][1]
+end
+
+public def updatePassword(oldPassword, newPassword, newPassword2, token)
+  errors = []
+  if (newPassword != newPassword2)
+    errors << 'Lösenorden överensstämmer inte.'
+    return ModelResponse.new(false, errors.join("\n"))
+  end
+
+  userId = getUserId(token)
+  result = $dbUsers.execute('SELECT Password FROM Users WHERE UserId = ?', userId)
+
+  if BCrypt::Password.new(result[0]['Password']) == oldPassword
+
+    passwordDigest = BCrypt::Password.create(newPassword)
+    begin
+      $dbUsers.execute('UPDATE Users SET Password = ? WHERE UserId = ?', passwordDigest, userId)
+    rescue
+      errors << 'Något gick snett.'
+    end
+  else
+    errors << 'Det nuvarande lösenordet var felaktigt.'
+  end
+
+  if !errors.empty?
     return ModelResponse.new(false, errors.join("\n"))
   end
   return ModelResponse.new(true, nil)
+end
+
+def getGroups()
+  return $dbUsers.execute('SELECT * FROM Groups')
+end
+
+def getSensors()
+  sensors = $dbSensors.execute('SELECT * FROM Sensors')
+  sensors = [{"SensorId"=>nil, "SensorTypeId"=>nil, "Bus"=>nil, "Address"=>nil, "Command"=>nil, "BoxId"=>nil}] if sensors.empty?
+  return sensors
+end
+
+def getSensorsTypes()
+  return $dbSensors.execute('SELECT * FROM SensorTypes')
 end

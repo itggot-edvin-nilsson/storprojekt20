@@ -16,15 +16,19 @@ get '/realtid' do
 end
 
 get '/realtid/:request' do
-  requestLifeTechServer(URI("https://ntilifetech.ga/realtid/#{params[:request]}?#{request.query_string}"), response)
+  return requestLifeTechServer(URI("https://ntilifetech.ga/realtid/#{params[:request]}?#{request.query_string}"), response)
 end
 
 get '/kamera' do
-  slim(:'/camera/index')
+  return slim(:'/camera/index')
 end
 
 get '/media' do
-  slim(:'/media/index')
+  return slim(:'/media/index')
+end
+
+get '/sensor' do
+  return slim(:'/sensor/index', locals: {sensors: getSensors(), types: getSensorsTypes()})
 end
 
 after '/*' do
@@ -63,7 +67,7 @@ before /\/(register|update-password)/ do
 end
 
 get '/register' do
-  return slim(:'user/add')
+  return slim(:'user/add', locals: {groups: getGroups()})
 end
 
 post '/register' do
@@ -99,15 +103,3 @@ get '*' do
   status 404
   slim(:'404')
 end
-
-#Error
-=begin
-get '/error' do
-  return slim(:'error') if session[:error]
-  redirect('/')
-end
-
-after '/error' do
-  session[:error] = nil
-end
-=end

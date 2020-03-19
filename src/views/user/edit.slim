@@ -1,0 +1,7 @@
+article
+  form action="update-password" method="post"
+    input type="password" name="oldPassword" autocomplete="off" placeholder="Skriv nuvarande lösenord..."
+    input type="password" name="newPassword"  autocomplete="off" placeholder="Skriv nytt lösenord..."
+    input type="password" name="newPassword2"  autocomplete="off" placeholder="Bekräfta nytt lösenord..."
+    input type="submit" value="Ändra lösenord"
+  p = session[:error]
