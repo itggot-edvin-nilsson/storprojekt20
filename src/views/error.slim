@@ -1,1 +1,3 @@
-p = session[:error]
+article
+  - error = @error.getError(session)
+  p = error.nil? ? "Felmeddelandet saknas." : error

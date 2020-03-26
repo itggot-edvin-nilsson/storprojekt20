@@ -64,10 +64,32 @@ public def login(username, password)
   end
 end
 
-public def verifyLogin(token)
+def havePermissionFor(permissionId, token)
+  userId = getUserId(token)
+  permissionIds = $dbUsers.execute('SELECT GroupPermissionRelation.PermissionId FROM GroupPermissionRelation ' +
+                                       'INNER JOIN Users ON GroupPermissionRelation.GroupId = Users.GroupId WHERE Users.UserId = ?', userId)
+  return permissionIds.include?(permissionId)
+end
+
+public def verifyLogin(token, pathOrigin)
   begin
     if Time.now <= $hash[token][0]
       $hash[token][0] = Time.now + 60 * 20
+
+      permissionId = nil
+
+      results = $dbUsers.execute('SELECT PermissionId, Path FROM Permissions')
+      results.each do |result|
+        if result['Path'] == pathOrigin
+          permissionId = result['PermissionId']
+          break
+        end
+      end
+
+      if permissionId != nil
+        return ModelResponse.new(false, "Du har inte behörighet för att göra detta.") if !havePermissionFor(permissionId, token)
+      end
+
       return ModelResponse.new(true, token)
     end
   rescue
@@ -138,4 +160,29 @@ end
 
 def getSensorsTypes()
   return $dbSensors.execute('SELECT * FROM SensorTypes')
+end
+
+def saveSensors(params)
+  bindVars = params.values[0...-1].each_slice(6)
+
+  $dbSensors.execute('DELETE FROM Sensors')
+
+  stmt = $dbSensors.prepare('INSERT INTO Sensors (SensorId, SensorTypeId, Bus, Address, Command, BoxId) VALUES (?, ?, ?, ?, ?, ?)')
+
+  bindVars.each do |bindVar|
+    stmt.execute(bindVar)
+  end
+
+  errors = []
+  if bindVars.map { |c| c[0] }.uniq.length != bindVars.count
+    errors << "Sensor ID:n behöver vara unika."
+  end
+
+  return ModelResponse.new(errors.empty?, errors.join(' '))
+end
+
+@error = public def getError(session)
+  error = session[:error]
+  session[:error] = nil
+  return error
 end

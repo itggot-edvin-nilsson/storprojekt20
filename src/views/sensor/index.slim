@@ -9,27 +9,29 @@ article
         th Address
         th Kommando
         th Habitat
-      tr
-        - sensors.each_with_index do |sensor, index|
-          / .item
+      - i = 0
+      - sensors.each do |sensor|
+        tr
           th
-            input type="number" name=index value=sensor["SensorId"] autocomplete="off"
+            input type="number" name=i+=1 value=sensor["SensorId"] autocomplete="off"
           th
-            select name="type"
+            select name=i+=1
               - types.each do |type|
-                option value=type['SensorTypeId'] = type['Name']
+                option value=type['SensorTypeId'] selected=("selected" if type['SensorTypeId'] == sensor["SensorTypeId"]) = type['Name']
           th
-            input type="number" name=index value=sensor["Bus"] autocomplete="off"
+            input type="number" name=i+=1 value=sensor["Bus"] autocomplete="off"
           th
-            input type="text" name=index value=sensor["Address"] autocomplete="off"
+            input type="text" name=i+=1 value=sensor["Address"] autocomplete="off"
           th
-            input type="number" name=index value=sensor["Command"] autocomplete="off"
+            input type="number" name=i+=1 value=sensor["Command"] autocomplete="off"
           th
-            input type="number" name=index value=sensor["BoxId"] autocomplete="off"
+            input type="number" name=i+=1 value=sensor["BoxId"] autocomplete="off"
           th
             button type="button" href="javascript:void(0)" class="del" X
     button type="button" id='add' href="javascript:void(0)" Lägg till punkt
     input type="submit" value="Spara och lämna"
+
+  p = @error.getError(session)
 
 script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"
 script src="/script/sensor.js"
