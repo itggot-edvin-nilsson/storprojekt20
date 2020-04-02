@@ -67,7 +67,8 @@ end
 def havePermissionFor(permissionId, token)
   userId = getUserId(token)
   permissionIds = $dbUsers.execute('SELECT GroupPermissionRelation.PermissionId FROM GroupPermissionRelation ' +
-                                       'INNER JOIN Users ON GroupPermissionRelation.GroupId = Users.GroupId WHERE Users.UserId = ?', userId)
+    'INNER JOIN Users ON GroupPermissionRelation.GroupId = Users.GroupId WHERE Users.UserId = ?', userId)
+    .map { |x| x["PermissionId"] }
   return permissionIds.include?(permissionId)
 end
 
@@ -92,7 +93,8 @@ public def verifyLogin(token, pathOrigin)
 
       return ModelResponse.new(true, token)
     end
-  rescue
+  rescue => error
+    p error
   end
   return ModelResponse.new(false, nil)
 end

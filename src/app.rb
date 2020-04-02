@@ -20,7 +20,9 @@ get '/realtid/:request' do
 end
 
 get '/kamera' do
-  return slim(:'/camera/index', locals: {title: 'Kamera'})
+  timestamps = requestLifeTechServer(URI("https://ntilifetech.ga/kamera"), response)
+    .force_encoding('utf-8').encode.scan(/Bilden är tagen (.*?)\.</).map { |x| x[0] }
+  return slim(:'/camera/index', locals: {title: 'Kamera', timestamps: timestamps})
 end
 
 get '/media' do
@@ -40,12 +42,6 @@ post '/sensor/save' do
     redirect('/sensor')
   end
 end
-
-=begin
-after '/*' do
-  session[:error] = nil if request.request_method == 'GET'
-end
-=end
 
 #User
 get '/login' do
@@ -72,15 +68,16 @@ end
 before /\/(register|update-password|sensor|sensor\/save)/ do
   pathOrigin = '/' + request.path.split('/')[1]
   response = verifyLogin(session[:token], pathOrigin)
-  session[:token] = response.data
   if !response.successful
     if !response.data.nil?
       session[:error] = response.data
       redirect('/error')
+    else
+      session[:redirect] = pathOrigin
+      redirect('/login')
     end
-
-    session[:redirect] = pathOrigin
-    redirect('/login')
+  else
+    session[:token] = response.data
   end
 end
 
