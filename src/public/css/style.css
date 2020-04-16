@@ -1,0 +1,159 @@
+body {
+	margin: 1rem;
+	font-family: sans-serif;
+	background-color: #fafafa;
+}
+
+header {
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 5px 5px;
+	margin: -1rem -1rem 0 -1rem;
+}
+
+header section {
+	display: flex;
+	max-width: 80rem;
+	margin: 0 auto;
+}
+
+header section img {
+	height: 5rem;
+	margin: .5rem .5rem .5rem 2rem;
+}
+
+header section nav {
+	margin: 1.8rem 1rem;
+}
+
+header section nav a {
+	text-decoration: none;
+	color: #333333;
+	margin: 0 1rem;
+	font-size: 1.1rem;
+	line-height: 200%;
+	display: inline-block;
+}
+
+a, header img {
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+}
+
+nav.period {
+	margin: 1rem;
+}
+
+nav.period a.period {
+	display: inline-block;
+	background: linear-gradient(purple, indigo);
+	padding: .2rem 1rem;
+	margin: .2rem;
+	line-height: 2rem;
+	text-decoration: none;
+	color: white;
+	border-radius: .4rem;
+	box-shadow: rgba(0, 0, 0, .3) 2px 4px 4px;
+}
+
+nav.period a.active {
+	background: white;
+	color: indigo;
+	font-weight: bold;
+	box-shadow: rgba(0, 0, 0, .3) 2px 4px 4px, rgba(0, 0, 0, .1) -1px -1px 4px;
+}
+
+article {
+	max-width: 80rem;
+	margin: 0 auto;
+}
+
+.chartContainer {
+	height: calc(100vh - 12.5rem);
+	min-height: 25rem;
+}
+
+article .article {
+	display: flex;
+	box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 5px, rgba(0, 0, 0, 0.1) -2px -2px 5px;
+	position: relative;
+	margin: 1rem 0;
+	text-decoration: none;
+	color: black;
+	background-color: white;
+}
+
+article .article a {
+	margin: 0;
+	display: inline;
+}
+
+article .article .img {
+	background-size: cover;
+	background-position: center;
+	max-width: 40%;
+	min-height: 20rem;
+	flex: 1;
+}
+
+article .article section {
+	margin: 0 1rem;
+	flex: 1;
+}
+
+article img.camera {
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.img-0 {
+	background: url(https://www.gp.se/image/policy:1.24215045:1582188647/ZaVkgRrbZH620qaK5q1F-Z-A93U-jpg.jpg?f=Wide&w=1920&$p$f$w=57a4d2b);
+}
+
+.img-1 {
+	background: url(https://via.tt.se/data/images/00024/34a36b25-c8d4-4400-8f38-5b58dc918d65-w_720.jpg);
+	background-position: 0% 40% !important;
+}
+
+.img-2 {
+	background: url(https://it-hallbarhet.se/wp-content/uploads/2019/10/Elever_NTI_Lifetech-1024x768.jpg);
+}
+
+.img-3 {
+	background: url(https://www.ntigymnasiet.se/wp-content/uploads/2019/08/Henrik_johann.jpg);
+	background-position: top !important;
+}
+
+
+@media only screen and (max-width: 50rem) {
+	header section {
+		flex-direction: column;
+	}
+
+	header section a {
+		margin: 0 auto;
+	}
+
+	header section nav {
+		margin: 0;
+		padding: .5rem;
+		text-align: center;
+		background-color: #fafafa;
+	}
+
+	header section img {
+		margin: .5rem;
+	}
+
+	article .article {
+		flex-direction: column;
+	}
+
+	article .article .img {
+		max-width: 100%;
+	}
+}

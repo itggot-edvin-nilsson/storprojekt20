@@ -1,0 +1,10 @@
+article
+  form action="register" method="post"
+    input type="text" name="username" autocomplete="off" placeholder="Skriv användarnamn..."
+    input type="password" name="password"  autocomplete="off" placeholder="Skriv lösenord..."
+    input type="password" name="password2"  autocomplete="off" placeholder="Bekräfta lösenord..."
+    select name="group"
+      - groups.each do |group|
+        option value=group['GroupId'] = group['Name']
+    input type="submit" value="Skapa konto"
+  p = @error.getError(session)

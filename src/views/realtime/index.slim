@@ -1,0 +1,13 @@
+article
+    nav.period
+        a class="period#{classes[0]}" href="/realtid"  Senaste minuten
+        a class="period#{classes[1]}" href="?senaste=timmen"  Senaste timmen
+        a class="period#{classes[2]}" href="?senaste=dygnet"  Senaste dygnet
+        a class="period#{classes[3]}" href="?senaste=veckan"  Senaste veckan
+        a class="period#{classes[4]}" href="?senaste=all"  All data
+article.chartTitle
+    h1
+section.chartContainer
+    canvas#myChart
+script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"
+script src="script/realtime.js"
