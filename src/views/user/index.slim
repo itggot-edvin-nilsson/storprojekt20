@@ -1,6 +1,9 @@
 article
+  p
   form action="login" method="post"
     input type="text" name="username" autocomplete="off" placeholder="Skriv användarnamn..."
+    br
     input type="password" name="password"  autocomplete="off" placeholder="Skriv lösenord..."
+    br
     input type="submit" value="Logga in"
-  p = @error.getError(session)
+  p = Model::getError(session)

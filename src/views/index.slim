@@ -1,14 +1,18 @@
 article
-    - if session[:token]
-        form action="logout" method="post"
-            input type="submit" value="Logga ut"
-        a href="/update-password" Ändra lösenord
-        br
-        a href="/register" Registrera användare
-        br
-        a href="/sensor" Sensorer
+  p
+    - userId = Model::getUserId(session[:token])
+    - if userId
+
+      p = "Inloggad som #{Model::getUserInfo(userId)['Username']}."
+      form action="logout" method="post" style="display: inline"
+        input type="submit" value="Logga ut"
+      br
+      br
+
+      - { '/update-password' => 'Ändra lösenord', '/register' => 'Registrera användare', '/sensor' => 'Sensorer', '/admin' => 'Admin'}.each do |path, name|
+        - if Model::havePermissionFor(Model::getPermissionId(path), session[:token])
+          a href=path = name
+          br
     - else
         form action="login" method="get"
             input type="submit" value="Logga in"
-
-    / p = session[:token]

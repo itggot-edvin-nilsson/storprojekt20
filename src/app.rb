@@ -38,7 +38,7 @@ end
 
 # Show page for configuring all sensors
 get '/sensor' do
-  return slim(:'/sensor/index', locals: {sensors: getSensors(), types: getSensorsTypes(), title: 'Sensorer'})
+  return slim(:'/sensor/index', locals: {sensors: getSensors(), types: getSensorsTypes(), habitats: getHabitats(), title: 'Sensorer'})
 end
 
 # Update the database with the latest changes
@@ -75,9 +75,9 @@ post '/login' do
   end
 end
 
+
 # Checks if the logged in user have the right permission to visit a page.
-# It runs before /register, /update-password, /sensor, /sensor/save
-before /\/(register|update-password|sensor|sensor\/save)/ do
+before getPermissionPathsAsRegex() do
   pathOrigin = '/' + request.path.split('/')[1]
   response = verifyLogin(session[:token], pathOrigin)
   if !response.successful
@@ -88,9 +88,8 @@ before /\/(register|update-password|sensor|sensor\/save)/ do
       session[:redirect] = pathOrigin
       redirect('/login')
     end
-  else
-    session[:token] = response.data
   end
+  session[:token] = response.data
 end
 
 # Show page for registering a new account
@@ -125,6 +124,38 @@ post '/update-password' do
   end
 end
 
+# Show page for admin tools
+get '/admin' do
+  return slim(:'admin/index', locals: {groups: getGroups()})
+end
+
+# Show page for deleting users
+get '/admin/user' do
+  return slim(:'user/delete', locals: {users: getUsers()})
+end
+
+# Delete user with user id
+post '/admin/user/delete' do
+  userId = params[:userId].to_i
+  deleteUser(userId)
+  redirect('/admin/user')
+end
+
+# Show page for changing permission for group
+get '/admin/:id' do
+  groupId = params[:id].to_i
+  groupName = getGroups()[groupId - 1]['Name']
+  return slim(:'admin/edit', locals: {permissions: getPermissions(), groupId: groupId, groupName: groupName})
+end
+
+# Toggle permission for a group
+post '/admin/toggle' do
+  groupId = params[:groupId].to_i
+  permissionId = params[:permissionId].to_i
+  togglePermission(permissionId, groupId)
+  redirect("/admin/#{groupId}")
+end
+
 # Logout user and redirect to homepage
 post '/logout' do
   session.destroy
@@ -142,3 +173,5 @@ get '*' do
   status 404
   slim(:'404')
 end
+
+clearExpiredTokens()

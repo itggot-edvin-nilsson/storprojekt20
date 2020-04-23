@@ -85,7 +85,20 @@
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The model part of M.V.C.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -109,6 +122,54 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#deleteUser-instance_method" title="#deleteUser (instance method)">#<strong>deleteUser</strong>(userId)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Delete user with user id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generateToken-instance_method" title="#generateToken (instance method)">#<strong>generateToken</strong>  &#x21d2; Int </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generates a login token.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -139,6 +200,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#getError-instance_method" title="#getError (instance method)">#<strong>getError</strong>(session)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get error message from session and expend it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#getGroups-instance_method" title="#getGroups (instance method)">#<strong>getGroups</strong>  &#x21d2; Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt; </a>
     
 
@@ -155,6 +240,102 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Get all groups.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getHabitats-instance_method" title="#getHabitats (instance method)">#<strong>getHabitats</strong>  &#x21d2; Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get all habitats.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getPermissionId-instance_method" title="#getPermissionId (instance method)">#<strong>getPermissionId</strong>(pathOrigin)  &#x21d2; Int<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get permission id for a path origin.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getPermissionPathsAsRegex-instance_method" title="#getPermissionPathsAsRegex (instance method)">#<strong>getPermissionPathsAsRegex</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get regular expression for checking permissions for paths.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getPermissions-instance_method" title="#getPermissions (instance method)">#<strong>getPermissions</strong>  &#x21d2; Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get all permissions.</p>
 </div></span>
   
 </li>
@@ -211,7 +392,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#getUserId-instance_method" title="#getUserId (instance method)">#<strong>getUserId</strong>(token)  &#x21d2; Int </a>
+      <a href="#getUserId-instance_method" title="#getUserId (instance method)">#<strong>getUserId</strong>(token)  &#x21d2; Int<sup>?</sup> </a>
     
 
     
@@ -227,6 +408,55 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Get user id from token.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getUserInfo-instance_method" title="#getUserInfo (instance method)">#<strong>getUserInfo</strong>(userId)  &#x21d2; Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The user info, the hash contains the keys &#39;UserId&#39;,
+&#39;GroupId&#39;, &#39;Password&#39; and &#39;Username&#39;.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getUsers-instance_method" title="#getUsers (instance method)">#<strong>getUsers</strong>  &#x21d2; Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get all users.</p>
 </div></span>
   
 </li>
@@ -259,6 +489,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#havePermissionForGroup-instance_method" title="#havePermissionForGroup (instance method)">#<strong>havePermissionForGroup</strong>(permissionId, groupId)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Check if a group have permission for a specific permission id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#login-instance_method" title="#login (instance method)">#<strong>login</strong>(username, password)  &#x21d2; Model::ModelResponse </a>
     
 
@@ -275,6 +529,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Login a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#passwordCheck-instance_method" title="#passwordCheck (instance method)">#<strong>passwordCheck</strong>(password)  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Check if password meets the requirements.</p>
 </div></span>
   
 </li>
@@ -331,7 +609,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#saveSensors-instance_method" title="#saveSensors (instance method)">#<strong>saveSensors</strong>(params)  &#x21d2; Object </a>
+      <a href="#saveSensors-instance_method" title="#saveSensors (instance method)">#<strong>saveSensors</strong>(params)  &#x21d2; Model::ModelResponse </a>
     
 
     
@@ -347,6 +625,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Save sensors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#togglePermission-instance_method" title="#togglePermission (instance method)">#<strong>togglePermission</strong>(permissionId, groupId)  &#x21d2; void </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Toggle permission for a group.</p>
 </div></span>
   
 </li>
@@ -411,7 +713,139 @@ origin.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="getDataPeriod-instance_method">
+  <h3 class="signature first" id="deleteUser-instance_method">
+  
+    #<strong>deleteUser</strong>(userId)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Delete user with user id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>user id of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_deleteUser'>deleteUser</span><span class='lparen'>(</span><span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
+  <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM Users WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
+  <span class='gvar'>$tokens</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='op'>|</span> <span class='id identifier rubyid_y'>y</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_userId'>userId</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="generateToken-instance_method">
+  
+    #<strong>generateToken</strong>  &#x21d2; <tt>Int</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generates a login token</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a new token</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generateToken'>generateToken</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>while</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>2</span><span class='op'>**</span><span class='int'>512</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_token'>token</span> <span class='kw'>unless</span> <span class='gvar'>$tokens</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getDataPeriod-instance_method">
   
     #<strong>getDataPeriod</strong>(queryString)  &#x21d2; <tt>Int</tt> 
   
@@ -478,23 +912,23 @@ origin.</p>
       <pre class="lines">
 
 
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60</pre>
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getDataPeriod'>getDataPeriod</span><span class='lparen'>(</span><span class='id identifier rubyid_queryString'>queryString</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_queryString'>queryString</span>
@@ -509,6 +943,91 @@ origin.</p>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='int'>0</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getError-instance_method">
+  
+    #<strong>getError</strong>(session)  &#x21d2; <tt>String</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get error message from session and expend it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>session</span>
+      
+      
+        <span class='type'>(<tt>Rack::Session::Abstract::PersistedSecure::SecureSessionHash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a reference to Sinatra session</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the error message</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+330
+331
+332
+333
+334</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 330</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getError'>getError</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_error'>error</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_error'>error</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -561,15 +1080,295 @@ origin.</p>
       <pre class="lines">
 
 
-193
-194
-195</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getGroups'>getGroups</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Groups</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getHabitats-instance_method">
+  
+    #<strong>getHabitats</strong>  &#x21d2; <tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get all habitats</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the habitats, the hash contains the keys &#39;HabitatId&#39; and
+&#39;Name&#39;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getHabitats'>getHabitats</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Habitats</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getPermissionId-instance_method">
+  
+    #<strong>getPermissionId</strong>(pathOrigin)  &#x21d2; <tt>Int</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get permission id for a path origin</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pathOrigin</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the path origin to check</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Int</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the permission id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getPermissionId'>getPermissionId</span><span class='lparen'>(</span><span class='id identifier rubyid_pathOrigin'>pathOrigin</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='id identifier rubyid_getPermissions'><span class='object_link'><a href="#getPermissions-instance_method" title="Model#getPermissions (method)">getPermissions</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_pathOrigin'>pathOrigin</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PermissionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getPermissionPathsAsRegex-instance_method">
+  
+    #<strong>getPermissionPathsAsRegex</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get regular expression for checking permissions for paths</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a regular expression</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getPermissionPathsAsRegex'>getPermissionPathsAsRegex</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_paths'>paths</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT Path FROM Permissions</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_paths'>paths</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)(\/.*|)</span><span class='regexp_end'>/</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getPermissions-instance_method">
+  
+    #<strong>getPermissions</strong>  &#x21d2; <tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get all permissions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the permissions, the hash contains the keys &#39;PermissionId&#39;,
+&#39;Name&#39; and &#39;Path&#39;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getPermissions'>getPermissions</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Permissions</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -608,8 +1407,8 @@ origin.</p>
         &mdash;
         <div class='inline'>
 <p>the sensors, the hash contains the keys&#39;SensorId&#39;,
-&#39;SensorTypeId&#39;, &#39;Bus&#39;, &#39;Address&#39;,
-&#39;Command&#39;, &#39;BoxId&#39;</p>
+&#39;SensorTypeId&#39;, &#39;Bus&#39;, &#39;Address&#39;, &#39;Command&#39;
+and &#39;BoxId&#39;</p>
 </div>
       
     </li>
@@ -624,14 +1423,14 @@ origin.</p>
       <pre class="lines">
 
 
-199
-200
-201
-202
-203</pre>
+43
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getSensors'>getSensors</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sensors'>sensors</span> <span class='op'>=</span> <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Sensors</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -674,7 +1473,7 @@ origin.</p>
       
         &mdash;
         <div class='inline'>
-<p>the sensor types, the hash contains the keys &#39;SensorTypeId&#39;,
+<p>the sensor types, the hash contains the keys &#39;SensorTypeId&#39; and
 &#39;FlowSensor&#39;</p>
 </div>
       
@@ -690,12 +1489,12 @@ origin.</p>
       <pre class="lines">
 
 
-207
-208
-209</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 207</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getSensorsTypes'>getSensorsTypes</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM SensorTypes</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -708,7 +1507,7 @@ origin.</p>
       <div class="method_details ">
   <h3 class="signature " id="getUserId-instance_method">
   
-    #<strong>getUserId</strong>(token)  &#x21d2; <tt>Int</tt> 
+    #<strong>getUserId</strong>(token)  &#x21d2; <tt>Int</tt><sup>?</sup> 
   
 
   
@@ -750,7 +1549,7 @@ origin.</p>
     <li>
       
       
-        <span class='type'>(<tt>Int</tt>)</span>
+        <span class='type'>(<tt>Int</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -771,15 +1570,163 @@ origin.</p>
       <pre class="lines">
 
 
-153
-154
-155</pre>
+254
+255
+256
+257
+258
+259
+260</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 254</span>
 
 <span class='id identifier rubyid_public'>public</span> <span class='kw'>def</span> <span class='id identifier rubyid_getUserId'>getUserId</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='gvar'>$hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>begin</span>
+    <span class='kw'>return</span> <span class='gvar'>$tokens</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>rescue</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getUserInfo-instance_method">
+  
+    #<strong>getUserInfo</strong>(userId)  &#x21d2; <tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the user info, the hash contains the keys &#39;UserId&#39;,
+&#39;GroupId&#39;, &#39;Password&#39; and &#39;Username&#39;.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the user info, the hash contains the keys &#39;UserId&#39;,
+&#39;GroupId&#39;, &#39;Password&#39; and &#39;Username&#39;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+264
+265
+266</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 264</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getUserInfo'>getUserInfo</span><span class='lparen'>(</span><span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
+  <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Users WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getUsers-instance_method">
+  
+    #<strong>getUsers</strong>  &#x21d2; <tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get all users</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SQLite3::ResultSet::HashWithTypesAndFields&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the users, the hash contains the keys &#39;UserId&#39;, &#39;GroupId&#39;
+and &#39;Username&#39;</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getUsers'>getUsers</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM Users</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -868,22 +1815,125 @@ origin.</p>
       <pre class="lines">
 
 
-86
-87
-88
-89
-90
-91
-92</pre>
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_havePermissionFor'>havePermissionFor</span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_permissionId'>permissionId</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='id identifier rubyid_userId'>userId</span> <span class='op'>=</span> <span class='id identifier rubyid_getUserId'><span class='object_link'><a href="#getUserId-instance_method" title="Model#getUserId (method)">getUserId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_userId'>userId</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='id identifier rubyid_permissionIds'>permissionIds</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT GroupPermissionRelation.PermissionId FROM GroupPermissionRelation </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
     <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INNER JOIN Users ON GroupPermissionRelation.GroupId = Users.GroupId WHERE Users.UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
-    <span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>PermissionId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+    <span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PermissionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_permissionIds'>permissionIds</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="havePermissionForGroup-instance_method">
+  
+    #<strong>havePermissionForGroup</strong>(permissionId, groupId)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Check if a group have permission for a specific permission id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>permissionId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the permission id to check</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>groupId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the group id to check</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if you have permission</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 157</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_havePermissionForGroup'>havePermissionForGroup</span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_permissionIds'>permissionIds</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT PermissionId FROM GroupPermissionRelation WHERE GroupId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PermissionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_permissionIds'>permissionIds</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -974,31 +2024,31 @@ the error message (String)</p>
       <pre class="lines">
 
 
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre>
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 123</span>
 
 <span class='id identifier rubyid_public'>public</span> <span class='kw'>def</span> <span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
     <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT Password, UserId FROM Users WHERE Username = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Password</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_password'>password</span>
-      <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>*</span> <span class='id identifier rubyid_password'>password</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>*</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>2</span><span class='op'>**</span><span class='int'>256</span><span class='rparen'>)</span>
-      <span class='gvar'>$hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>60</span> <span class='op'>*</span> <span class='int'>20</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='id identifier rubyid_generateToken'><span class='object_link'><a href="#generateToken-instance_method" title="Model#generateToken (method)">generateToken</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+      <span class='gvar'>$tokens</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>60</span> <span class='op'>*</span> <span class='int'>10</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rbracket'>]</span>
       <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>StandardError</span>
@@ -1007,6 +2057,91 @@ the error message (String)</p>
     <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_error'>error</span>
     <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Användarnamnet eller lösenordet var felaktigt.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="passwordCheck-instance_method">
+  
+    #<strong>passwordCheck</strong>(password)  &#x21d2; <tt>Array&lt;String&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Check if password meets the requirements</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>to check</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a array with error messages</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 219</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_passwordCheck'>passwordCheck</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Lösenordet måste åtminstone vara sex tecken långt.</span><span class='tstring_end'>&#39;</span></span><span class='kw'>if</span> <span class='id identifier rubyid_password'>password</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;</span> <span class='int'>6</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_errors'>errors</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1128,34 +2263,36 @@ otherwise nil</p>
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148</pre>
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 231</span>
 
 <span class='id identifier rubyid_public'>public</span> <span class='kw'>def</span> <span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_password2'>password2</span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Lösenorden överensstämmer inte.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span> <span class='op'>!=</span> <span class='id identifier rubyid_password2'>password2</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>||</span> <span class='id identifier rubyid_username'>username</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>1000</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Användarnamnet måste vara mellan ett och 1000 tecken.</span><span class='tstring_end'>&#39;</span></span>
-  <span class='kw'>else</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Användarnamnet måste vara mellan ett och 1000 tecken.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>||</span> <span class='id identifier rubyid_username'>username</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>1000</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='id identifier rubyid_passwordCheck'><span class='object_link'><a href="#passwordCheck-instance_method" title="Model#passwordCheck (method)">passwordCheck</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
     <span class='id identifier rubyid_passwordDigest'>passwordDigest</span> <span class='op'>=</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
     <span class='kw'>begin</span>
       <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO Users (GroupId, Password, Username) VALUES (?,?,?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='comma'>,</span> <span class='id identifier rubyid_passwordDigest'>passwordDigest</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
@@ -1164,7 +2301,7 @@ otherwise nil</p>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1237,19 +2374,19 @@ otherwise nil</p>
       <pre class="lines">
 
 
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41</pre>
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requestLifeTechServer'>requestLifeTechServer</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
   <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
@@ -1269,7 +2406,7 @@ otherwise nil</p>
       <div class="method_details ">
   <h3 class="signature " id="saveSensors-instance_method">
   
-    #<strong>saveSensors</strong>(params)  &#x21d2; <tt>Object</tt> 
+    #<strong>saveSensors</strong>(params)  &#x21d2; <tt><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">Model::ModelResponse</a></span></tt> 
   
 
   
@@ -1284,7 +2421,45 @@ otherwise nil</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Sinatra::IndifferentHash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a reference to Sinatra params</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">Model::ModelResponse</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a model response, extra data is error message (String) if not successful</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 
 
@@ -1294,45 +2469,130 @@ otherwise nil</p>
       <pre class="lines">
 
 
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229</pre>
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 306</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_saveSensors'>saveSensors</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_bindVars'>bindVars</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each_slice'>each_slice</span><span class='lparen'>(</span><span class='int'>6</span><span class='rparen'>)</span>
 
   <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM Sensors</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_stmt'>stmt</span> <span class='op'>=</span> <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_prepare'>prepare</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO Sensors (SensorId, SensorTypeId, Bus, Address, Command, BoxId) VALUES (?, ?, ?, ?, ?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_stmt'>stmt</span> <span class='op'>=</span> <span class='gvar'>$dbSensors</span><span class='period'>.</span><span class='id identifier rubyid_prepare'>prepare</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO Sensors (SensorId, SensorTypeId, Bus, Address, Command, HabitatId) VALUES (?, ?, ?, ?, ?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bindVar'>bindVar</span><span class='op'>|</span>
     <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_bindVar'>bindVar</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>!=</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
-    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sensor ID:n behöver vara unika.</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sensor ID:n behöver vara unika.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>!=</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Åtminstone en I2C bus saknas.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Åtminstone en address saknas.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Åtminstone ett kommando saknas.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>4</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Åtminstone ett habitat saknas.</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_bindVars'>bindVars</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='lbracket'>[</span><span class='int'>5</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
 
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="togglePermission-instance_method">
+  
+    #<strong>togglePermission</strong>(permissionId, groupId)  &#x21d2; <tt>void</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Toggle permission for a group</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>permissionId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the permission id to toggle</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>groupId</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the group id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_togglePermission'>togglePermission</span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='rparen'>)</span>
+  <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM GroupPermissionRelation WHERE GroupId = ? AND PermissionId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='comma'>,</span> <span class='id identifier rubyid_permissionId'>permissionId</span><span class='rparen'>)</span>
+  <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO GroupPermissionRelation (GroupId, PermissionId) VALUES (?,?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_groupId'>groupId</span><span class='comma'>,</span> <span class='id identifier rubyid_permissionId'>permissionId</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_changes'>changes</span> <span class='op'>==</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1454,57 +2714,59 @@ otherwise nil</p>
       <pre class="lines">
 
 
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189</pre>
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 274</span>
 
 <span class='id identifier rubyid_public'>public</span> <span class='kw'>def</span> <span class='id identifier rubyid_updatePassword'>updatePassword</span><span class='lparen'>(</span><span class='id identifier rubyid_oldPassword'>oldPassword</span><span class='comma'>,</span> <span class='id identifier rubyid_newPassword'>newPassword</span><span class='comma'>,</span> <span class='id identifier rubyid_newPassword2'>newPassword2</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_newPassword'>newPassword</span> <span class='op'>!=</span> <span class='id identifier rubyid_newPassword2'>newPassword2</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Lösenorden överensstämmer inte.</span><span class='tstring_end'>&#39;</span></span>
-    <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='kw'>begin</span>
 
-  <span class='id identifier rubyid_userId'>userId</span> <span class='op'>=</span> <span class='id identifier rubyid_getUserId'><span class='object_link'><a href="#getUserId-instance_method" title="Model#getUserId (method)">getUserId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT Password FROM Users WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Lösenorden överensstämmer inte.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_newPassword'>newPassword</span> <span class='op'>!=</span> <span class='id identifier rubyid_newPassword2'>newPassword2</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='id identifier rubyid_passwordCheck'><span class='object_link'><a href="#passwordCheck-instance_method" title="Model#passwordCheck (method)">passwordCheck</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_newPassword'>newPassword</span><span class='rparen'>)</span><span class='rparen'>)</span>
 
-  <span class='kw'>if</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Password</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_oldPassword'>oldPassword</span>
+    <span class='id identifier rubyid_userId'>userId</span> <span class='op'>=</span> <span class='id identifier rubyid_getUserId'><span class='object_link'><a href="#getUserId-instance_method" title="Model#getUserId (method)">getUserId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Du är inte längre inloggad.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_userId'>userId</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT Password FROM Users WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_passwordDigest'>passwordDigest</span> <span class='op'>=</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_newPassword'>newPassword</span><span class='rparen'>)</span>
-    <span class='kw'>begin</span>
-      <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE Users SET Password = ? WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_passwordDigest'>passwordDigest</span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
-    <span class='kw'>rescue</span>
-      <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Något gick snett.</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>if</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Password</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_oldPassword'>oldPassword</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='id identifier rubyid_passwordDigest'>passwordDigest</span> <span class='op'>=</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_newPassword'>newPassword</span><span class='rparen'>)</span>
+        <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE Users SET Password = ? WHERE UserId = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_passwordDigest'>passwordDigest</span><span class='comma'>,</span> <span class='id identifier rubyid_userId'>userId</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Det nuvarande lösenordet var felaktigt.</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Det nuvarande lösenordet var felaktigt.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Något gick snett.</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1601,56 +2863,44 @@ the error message (String)</p>
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123</pre>
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/model.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'src/model.rb', line 195</span>
 
 <span class='id identifier rubyid_public'>public</span> <span class='kw'>def</span> <span class='id identifier rubyid_verifyLogin'>verifyLogin</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_pathOrigin'>pathOrigin</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
-    <span class='kw'>if</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&lt;=</span> <span class='gvar'>$hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
-      <span class='gvar'>$hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>60</span> <span class='op'>*</span> <span class='int'>20</span>
+    <span class='kw'>if</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&lt;=</span> <span class='gvar'>$tokens</span><span class='lbracket'>[</span><span class='id identifier rubyid_token'>token</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_newToken'>newToken</span> <span class='op'>=</span> <span class='id identifier rubyid_generateToken'><span class='object_link'><a href="#generateToken-instance_method" title="Model#generateToken (method)">generateToken</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+      <span class='gvar'>$tokens</span><span class='lbracket'>[</span><span class='id identifier rubyid_newToken'>newToken</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='gvar'>$tokens</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+      <span class='gvar'>$tokens</span><span class='lbracket'>[</span><span class='id identifier rubyid_newToken'>newToken</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>60</span> <span class='op'>*</span> <span class='int'>10</span>
 
-      <span class='id identifier rubyid_permissionId'>permissionId</span> <span class='op'>=</span> <span class='kw'>nil</span>
-
-      <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='gvar'>$dbUsers</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT PermissionId, Path FROM Permissions</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_results'>results</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_result'>result</span><span class='op'>|</span>
-        <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_pathOrigin'>pathOrigin</span>
-          <span class='id identifier rubyid_permissionId'>permissionId</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PermissionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-          <span class='kw'>break</span>
-        <span class='kw'>end</span>
-      <span class='kw'>end</span>
+      <span class='id identifier rubyid_permissionId'>permissionId</span> <span class='op'>=</span> <span class='id identifier rubyid_getPermissionId'><span class='object_link'><a href="#getPermissionId-instance_method" title="Model#getPermissionId (method)">getPermissionId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_pathOrigin'>pathOrigin</span><span class='rparen'>)</span>
 
       <span class='kw'>if</span> <span class='id identifier rubyid_permissionId'>permissionId</span> <span class='op'>!=</span> <span class='kw'>nil</span>
-        <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Du har inte behörighet för att göra detta.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_havePermissionFor'><span class='object_link'><a href="#havePermissionFor-instance_method" title="Model#havePermissionFor (method)">havePermissionFor</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Du har inte behörighet för att göra eller visa detta.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_havePermissionFor'><span class='object_link'><a href="#havePermissionFor-instance_method" title="Model#havePermissionFor (method)">havePermissionFor</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_permissionId'>permissionId</span><span class='comma'>,</span> <span class='id identifier rubyid_newToken'>newToken</span><span class='rparen'>)</span>
       <span class='kw'>end</span>
 
-      <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Model/ModelResponse.html" title="Model::ModelResponse (class)">ModelResponse</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Model/ModelResponse.html#initialize-instance_method" title="Model::ModelResponse#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='comma'>,</span> <span class='id identifier rubyid_newToken'>newToken</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
     <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_error'>error</span>
@@ -1667,7 +2917,7 @@ the error message (String)</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Apr 16 15:48:01 2020 by
+  Generated on Thu Apr 23 15:11:21 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.5.1).
 </div>

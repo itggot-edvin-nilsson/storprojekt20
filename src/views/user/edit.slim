@@ -1,7 +1,11 @@
 article
+  p
   form action="update-password" method="post"
     input type="password" name="oldPassword" autocomplete="off" placeholder="Skriv nuvarande lösenord..."
+    br
     input type="password" name="newPassword"  autocomplete="off" placeholder="Skriv nytt lösenord..."
+    br
     input type="password" name="newPassword2"  autocomplete="off" placeholder="Bekräfta nytt lösenord..."
+    br
     input type="submit" value="Ändra lösenord"
-  p = @error.getError(session)
+  p = Model::getError(session)

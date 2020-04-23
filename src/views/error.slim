@@ -1,4 +1,4 @@
 article
-  - error = @error.getError(session)
+  - error = Model::getError(session)
   p = error.nil? ? "Felmeddelandet saknas." : error
   a href="/" Tillbaka

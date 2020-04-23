@@ -1,0 +1,8 @@
+article
+  h1 Behörigheter för grupper
+  - groups.each do |group|
+    a href="admin/#{group['GroupId']}" = group['Name']
+    br
+  br
+  h1 Användarhantering
+  a href="/admin/user" Ta bort användare
