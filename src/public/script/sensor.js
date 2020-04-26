@@ -1,5 +1,5 @@
 $("#add").click(function () {
-    let i = $('input').eq(-2).attr('name')
+    let i = parseInt($('input').eq(-2).attr('name')) + 1;
     let inputs = $('tr');
     let point = inputs.last().clone(true, true).appendTo('tbody');
     point.find('input, select').val('').attr('name', () => ++i);

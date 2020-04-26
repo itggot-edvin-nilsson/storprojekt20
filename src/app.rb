@@ -5,6 +5,7 @@ include Model
 
 enable :sessions
 set :bind, '0.0.0.0'
+set :environment, :production
 
 # Show the homepage
 get '/' do
@@ -59,7 +60,7 @@ end
 
 # Send username and password for user login
 post '/login' do
-  response = login(params[:username], params[:password])
+  response = login(params[:username], params[:password], request)
   if response.successful
     session[:token] = response.data
     if session[:redirect]
@@ -75,14 +76,14 @@ post '/login' do
   end
 end
 
-
 # Checks if the logged in user have the right permission to visit a page.
 before getPermissionPathsAsRegex() do
   pathOrigin = '/' + request.path.split('/')[1]
   response = verifyLogin(session[:token], pathOrigin)
   if !response.successful
-    if !response.data.nil?
-      session[:error] = response.data
+    session[:token] = nil if response.data[1]
+    if !response.data[0].nil?
+      session[:error] = response.data[0]
       redirect('/error')
     else
       session[:redirect] = pathOrigin
@@ -99,7 +100,7 @@ end
 
 # Register a new account
 post '/register' do
-  response = register(params[:username], params[:password], params[:password2], params[:group].to_i)
+  response = register(params[:username], params[:password], params[:password2], params[:group].to_i, session[:token])
   if response.successful
     redirect('/')
   else
@@ -126,12 +127,12 @@ end
 
 # Show page for admin tools
 get '/admin' do
-  return slim(:'admin/index', locals: {groups: getGroups()})
+  return slim(:'admin/index', locals: {groups: getGroups(), title: 'Administratörsverktyg'})
 end
 
 # Show page for deleting users
 get '/admin/user' do
-  return slim(:'user/delete', locals: {users: getUsers()})
+  return slim(:'user/delete', locals: {users: getUsers(), title: 'Ta bort användare'})
 end
 
 # Delete user with user id
@@ -145,7 +146,7 @@ end
 get '/admin/:id' do
   groupId = params[:id].to_i
   groupName = getGroups()[groupId - 1]['Name']
-  return slim(:'admin/edit', locals: {permissions: getPermissions(), groupId: groupId, groupName: groupName})
+  return slim(:'admin/edit', locals: {permissions: getPermissions(), groupId: groupId, groupName: groupName, title: "Behörigheter för grupp: #{groupName}"})
 end
 
 # Toggle permission for a group

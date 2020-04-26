@@ -1,7 +1,7 @@
 article
   h1 = "Behörigheter för grupp: #{groupName}"
   - permissions.each do |permission|
-    a = "#{permission['Name']} (#{permission['Path']})"
+    a.fixed-width = "#{permission['Name']} (#{permission['Path']})"
     form action="toggle" method="post" style="display: inline"
       input type="hidden" name="groupId" value=groupId
       input type="hidden" name="permissionId" value= permission['PermissionId']

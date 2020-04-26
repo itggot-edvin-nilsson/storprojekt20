@@ -1,7 +1,7 @@
 article
   h1 Ta bort användare
   - users.each do |user|
-    a = user['Username']
+    a.fixed-width = user['Username']
     form action="/admin/user/delete" method="post" style="display: inline"
       input type="hidden" name="userId" value=user['UserId']
       input type="submit" value="Ta bort"

@@ -7,8 +7,10 @@ En webbsida för gymnasiearbetet Lifetech. Målet med grupprojektet är att skap
 Webbsidan ska kunna göra följande:
 * Visa och visualisera realtidsdata
 * Visa kameravyer
-* Ändra parametrar för de olika styrsystemen
-* Ändra behörighet för olika användare
+* Registrera användare
+* Ta bort användare
+* Ändra sitt lösenord
+* Ändra behörighet för olika grupper
 * Lägga till/ta bort sensorer samt ändra buss, adress och kommando.
 
 ## 2. Vyer (visa bildskisser på dina sidor)

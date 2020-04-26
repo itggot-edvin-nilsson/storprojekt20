@@ -1,0 +1,5 @@
+Eftersom endast inloggade personer med behörigheter att registrera konton kan registrera
+konton så använd dessa inloggningsuppgifter för att kunna använda webbapplikationen.
+
+Användarnamn: admin
+Lösenord: admin

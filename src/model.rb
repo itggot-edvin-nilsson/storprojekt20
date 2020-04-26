@@ -116,16 +116,36 @@ module Model
     end
   end
 
+  $recentIps = []
+
+
+  # Limit rate of request from ip
+  # @param ip [String] ip address of client
+  # @return [Boolean] if request is blocked
+  def rateLimiter(ip)
+    denied = $recentIps.include?(ip)
+    $recentIps << ip
+
+    Thread.new do
+      sleep 2
+      $recentIps.slice!($recentIps.index(ip))
+    end
+
+    return denied
+  end
+
   # Login a user
   # @param username [String] the username
   # @param password [password] the password
+  # @param request [Sinatra::Request] a reference to Sinatra request
   # @return [Model::ModelResponse] a model response, extra data is the token (Int) if successful, otherwise the error message (String)
-  public def login(username, password)
+  public def login(username, password, request)
+    return ModelResponse.new(false, 'För många inloggningsförfrågningar kommer från denna ip address.') if rateLimiter(request.ip)
     begin
-      result = $dbUsers.execute('SELECT Password, UserId FROM Users WHERE Username = ?', username)
-      if BCrypt::Password.new(result[0]['Password']) == password
+      result = $dbUsers.execute('SELECT PasswordDigest, UserId FROM Users WHERE Username = ?', username)
+      if BCrypt::Password.new(result[0]['PasswordDigest']) == password
         token = generateToken()
-        $tokens[token] = [Time.now + 60 * 10, result[0]['UserId']]
+        $tokens[token] = [Time.now + 60 * 5, result[0]['UserId']]
         return ModelResponse.new(true, token)
       else
         raise StandardError
@@ -191,26 +211,28 @@ module Model
   # Verify if a token is valid and if the user have the permission for a path origin
   # @param token [Int] the user token
   # @param pathOrigin [String] the path origin, for example '/sensor'
-  # @return [Model::ModelResponse] a model response, extra data is the token (Int) if successful, otherwise the error message (String)
+  # @return [Model::ModelResponse] a model response, extra data is the token (Int) if successful, otherwise the a array with error message and boolean if should logout ([String, Boolean]). Error message can be nil
   public def verifyLogin(token, pathOrigin)
     begin
       if Time.now <= $tokens[token][0]
-        newToken = generateToken()
-        $tokens[newToken] = $tokens.delete(token)
-        $tokens[newToken][0] = Time.now + 60 * 10
-
         permissionId = getPermissionId(pathOrigin)
 
-        if permissionId != nil
-          return ModelResponse.new(false, "Du har inte behörighet för att göra eller visa detta.") if !havePermissionFor(permissionId, newToken)
+        if permissionId != nil && !havePermissionFor(permissionId, token)
+          return ModelResponse.new(false, ['Du har inte behörighet för att göra eller visa detta.', false])
         end
 
+        newToken = generateToken()
+        $tokens[newToken] = $tokens.delete(token)
+        $tokens[newToken][0] = Time.now + 60 * 5
+
         return ModelResponse.new(true, newToken)
+      else
+        return ModelResponse.new(false, ['Du har blivit automatiskt utloggad eftersom du varit inaktiv för länge.', true])
       end
     rescue => error
       p error
     end
-    return ModelResponse.new(false, nil)
+    return ModelResponse.new(false, [nil, false])
   end
 
   # Check if password meets the requirements
@@ -218,7 +240,7 @@ module Model
   # @return [Array<String>] a array with error messages
   def passwordCheck(password)
     errors = []
-    errors << 'Lösenordet måste åtminstone vara sex tecken långt.'if password.length < 6
+    errors << 'Lösenordet måste åtminstone vara fyra tecken långt.'if password.length < 4
     return errors
   end
 
@@ -228,16 +250,23 @@ module Model
   # @param password2 [String] the password confirmation
   # @param groupId [Int] the group id
   # @return [Model::ModelResponse] a model response, extra data is error message (String) if not successful, otherwise nil
-  public def register(username, password, password2, groupId)
+  public def register(username, password, password2, groupId, token)
     errors = []
     errors << 'Lösenorden överensstämmer inte.' if (password != password2)
     errors << 'Användarnamnet måste vara mellan ett och 1000 tecken.' if (username.empty? || username.length > 1000)
     errors.concat(passwordCheck(password))
 
+    $dbUsers.execute('SELECT PermissionId FROM GroupPermissionRelation WHERE GroupId = ?', groupId).each do |result|
+      if !havePermissionFor(result['PermissionId'], token)
+        errors << 'Du kan inte registrera en användare med högre behörighet.'
+        break
+      end
+    end
+
     if errors.empty?
       passwordDigest = BCrypt::Password.create(password)
       begin
-        $dbUsers.execute('INSERT INTO Users (GroupId, Password, Username) VALUES (?,?,?)', groupId, passwordDigest, username)
+        $dbUsers.execute('INSERT INTO Users (GroupId, PasswordDigest, Username) VALUES (?,?,?)', groupId, passwordDigest, username)
       rescue
         errors << 'Användarnamnet är upptaget.'
       end
@@ -260,7 +289,7 @@ module Model
   end
 
   # @param userId [Int]
-  # @return [Array<SQLite3::ResultSet::HashWithTypesAndFields>] the user info, the hash contains the keys 'UserId', 'GroupId', 'Password' and 'Username'
+  # @return [Array<SQLite3::ResultSet::HashWithTypesAndFields>] the user info, the hash contains the keys 'UserId', 'GroupId', 'PasswordDigest' and 'Username'
   def getUserInfo(userId)
     $dbUsers.execute('SELECT * FROM Users WHERE UserId = ?', userId)[0]
   end
@@ -280,17 +309,17 @@ module Model
 
       userId = getUserId(token)
       errors << 'Du är inte längre inloggad.' if userId.nil?
-      result = $dbUsers.execute('SELECT Password FROM Users WHERE UserId = ?', userId)
+      result = $dbUsers.execute('SELECT PasswordDigest FROM Users WHERE UserId = ?', userId)
 
-      if BCrypt::Password.new(result[0]['Password']) == oldPassword
+      if BCrypt::Password.new(result[0]['PasswordDigest']) == oldPassword
         if errors.empty?
           passwordDigest = BCrypt::Password.create(newPassword)
-          $dbUsers.execute('UPDATE Users SET Password = ? WHERE UserId = ?', passwordDigest, userId)
+          $dbUsers.execute('UPDATE Users SET PasswordDigest = ? WHERE UserId = ?', passwordDigest, userId)
         end
       else
         errors << 'Det nuvarande lösenordet var felaktigt.'
       end
-    rescue => e
+    rescue
       errors << 'Något gick snett.'
     end
 
@@ -315,11 +344,12 @@ module Model
     end
 
     errors = []
-    errors << "Sensor ID:n behöver vara unika." if bindVars.map { |c| c[0] }.uniq.length != bindVars.count
-    errors << "Åtminstone en I2C bus saknas." if bindVars.any? { |c| c[2] == "" }
-    errors << "Åtminstone en address saknas." if bindVars.any? { |c| c[3] == "" }
-    errors << "Åtminstone ett kommando saknas." if bindVars.any? { |c| c[4] == "" }
-    errors << "Åtminstone ett habitat saknas." if bindVars.any? { |c| c[5] == "" }
+    errors << 'Sensor ID:n behöver vara unika.' if bindVars.map { |c| c[0] }.uniq.length != bindVars.count
+    errors << 'Åtminstone ett sensor id saknas.' if bindVars.any? { |c| c[0] == "" }
+    errors << 'Åtminstone en I2C bus saknas.' if bindVars.any? { |c| c[2] == "" }
+    errors << 'Åtminstone en address saknas.' if bindVars.any? { |c| c[3] == "" }
+    errors << 'Åtminstone ett kommando saknas.' if bindVars.any? { |c| c[4] == "" }
+    errors << 'Åtminstone ett habitat saknas.' if bindVars.any? { |c| c[5] == "" }
 
     return ModelResponse.new(errors.empty?, errors.join(' '))
   end

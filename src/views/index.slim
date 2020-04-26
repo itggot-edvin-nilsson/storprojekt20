@@ -1,18 +1,18 @@
 article
   p
-    - userId = Model::getUserId(session[:token])
-    - if userId
+  - userId = Model::getUserId(session[:token])
+  - if userId
 
-      p = "Inloggad som #{Model::getUserInfo(userId)['Username']}."
-      form action="logout" method="post" style="display: inline"
-        input type="submit" value="Logga ut"
-      br
-      br
+    h1 = "Välkommen #{Model::getUserInfo(userId)['Username']}."
+    form.fixed-width action="logout" method="post" style="display: inline-block"
+      input type="submit" value="Logga ut"
+    br
+    br
 
-      - { '/update-password' => 'Ändra lösenord', '/register' => 'Registrera användare', '/sensor' => 'Sensorer', '/admin' => 'Admin'}.each do |path, name|
-        - if Model::havePermissionFor(Model::getPermissionId(path), session[:token])
-          a href=path = name
-          br
-    - else
-        form action="login" method="get"
-            input type="submit" value="Logga in"
+    - {'/update-password' => 'Ändra lösenord', '/register' => 'Registrera användare', '/sensor' => 'Sensorer', '/admin' => 'Administratörsverktyg'}.each do |path, name|
+      - if Model::havePermissionFor(Model::getPermissionId(path), session[:token])
+        a.fixed-width href=path = name
+        br
+  - else
+    form action="login" method="get"
+      input type="submit" value="Logga in"
